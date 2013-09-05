@@ -4,7 +4,7 @@
  * 
  * @CreateTime 2013/9/2
  * 
- * @Description Linear List
+ * @Description Linear Sequenced List
  * --------------------------------------
  */
 using System;
