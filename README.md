@@ -16,6 +16,8 @@ DataStructure
 * AL_Search 查找算法
 * AL_Sort 排序算法
 * DS_CPP_xxx 为c++版本的数据结构
+* DS_Java_xxx 为java版本的数据结构
+* EX_xxx 为各种练习的代码
 
 注意
 ----
