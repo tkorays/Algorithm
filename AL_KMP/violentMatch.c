@@ -1,27 +1,28 @@
+
 #include <stdio.h>
-#include <stdlib.h>
+
 
 int violentMatch(const char* s, int ls, const char* p, int lp){
-	int i,j;
-	for(i=0;i<ls;i++){
-		for(j=0;j<lp;j++){
-			if(s[i]!=p[j]) break;
-		}
-		if(j>=lp){
-			return i;
+	int i=0,j=0;
+	while(i<ls && j<lp){
+		if(s[i]==p[j]){
+			i++;
+			j++;
 		}else{
-			i=i-(j-1);
+			i=i-j+1;
+			j=0;
 		}
 	}
-	if(i>=ls){
-		i=-1;
+	if(j==lp){
+		return i-j;
+	}else{
+		return -1;
 	}
-	return i;
 }
 
 int main(int argc,char** argv){
-	const char* a = "abcbcbcde";
-	const char* b = "cbcbd";
-	printf("%d\n",violentMatch(a,strlen(a),b,strlen(b));
+	const char* a = "ihavetwoapples";
+	const char* b = "apple";
+	printf("%d\n",violentMatch(a,strlen(a),b,strlen(b)));
 	return 0;
 }
