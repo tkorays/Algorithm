@@ -9,6 +9,6 @@ I won't tell you these code smell bad.
 
 ##Introduction
 
-The CSharpPractice folder includes old practice files.
+The CSharpPractice folder contains old practice files.
 These algorithms were writen by C# language.
 

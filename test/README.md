@@ -1,3 +1,3 @@
 #About
 
-This folder includes unit test(use CPPTest) .
+This folder contains unit test(use CPPTest) .
