@@ -18,14 +18,7 @@ typedef struct {
 
 xadp_list_func g_xlist_func;
 
-int xadp_list_reg_func(xadp_list_func* func){
-    if(func == 0){
-        return 1;
-    }
-    g_xlist_func.fun_create = func->fun_create;
-    g_xlist_func.fun_destroy = func->fun_destroy;
-    return 0;
-}
+int xadp_list_reg_func(xadp_list_func* func);
 
 #define xadp_list_create(size) g_xlist_func.fun_create(size)
 #define xadp_list_destroy(lst) g_xlist_func.fun_destroy(lst)
