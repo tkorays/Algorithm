@@ -12,6 +12,8 @@
  */
 #include <stdio.h>
 
+// 1) O(n^2)
+// 2) O(n) * 2 = O(n), [target - x for x in nums] 
 int* twoSum(int* nums, int numsSize, int target) {
     int i, j;
     int* list = 0;
