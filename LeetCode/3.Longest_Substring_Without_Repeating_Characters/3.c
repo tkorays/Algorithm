@@ -11,6 +11,23 @@
  */
 #include <stdio.h>
 
+// leetcode 上面有一种比较神奇的解法
+// 它记录了字符每一次出现的地方的下一个位置,index[s[j]] = j + 1
+// 如果再出现了，则start从这个地方开始, i = index[s[j]] > i ? index[s[j]] : i;
+// 这种查表法，效率很高，O(n) !!!
+// int n = s.length(), ans = 0;
+//
+// int index[128] = { 0 };
+// for (int j = 0, i = 0; j < n; ++j)
+// {
+// 若遇到相同字符，此时的s[j]对应的值一定比i大
+// i = index[s[j]]>i ? index[s[j]] : i;
+// ans = ans > j - i + 1 ? ans : j - i + 1;
+// 刷新表
+// index[s[j]] = j + 1;
+// }
+// return ans;
+
 int lengthOfLongestSubstring(char* s) {
     int max = 0, start = 0, cur = 0;
     int i;
