@@ -5,27 +5,37 @@
 #include <stdlib.h>
 #include <string.h>
 
+// http://www.tkorays.com/2016/10/31/Longest-Palindromic-Substring/
 char* longestPalindrome(char* s) {
-    int i, j;
-    int mr = 0, c = 0, ml = 0, len = 0;
-    int rl[2001] = {0};
-    len = 2 * strlen(s) + 1;
-    for(i = 0; i < len; i++) {
-        rl[i] = i < mr ? (rl[2*c - i] > (mr - i) ? (mr - i) : rl[2*c - i]) : 1;
-        while((i - rl[i] >= 0) && (i + rl[i] < len)) {
-            if((((i + rl[i]) % 2 == 1) && (s[(i-1)/2 - rl[(i-1)/2]] == s[(i-1)/2 + rl[(i-1)/2]])) || ((i + rl[i]) % 2 == 0)) rl[i] += 1;
-            else break;
+    int i,j, n;
+    int c = 0, r = 0;
+    int ml = 0, cur = 0;
+    int P[2001] = {0};
+    n = strlen(s);
+    for(i=1; i<2*n; i++) {
+        j = 2*c - i;
+        P[i] = i < r ? (P[j] < (r-i) ? P[j] : (r-i)) : 0;
+        while((i+1+P[i] < (2*n+1) && (i-1-P[i]>=0))) {
+            if((i+1+P[i])%2==1 && (s[(i+1+P[i])/2] != s[(i-1-P[i])/2])) {
+                break;
+            }
+            P[i]++;
         }
-        if(rl[i] + i - 1 > mr) {
-            mr = rl[i] + i - 1;
+        if((i+P[i]) > r) {
             c = i;
+            r = i + P[i];
         }
-        ml = ml > rl[i] ? ml : rl[i];
     }
-    printf("%d,%d\n", c, ml);
-    j = c % 2 == 1 ? ((c-1)/2 - (rl[c]-1)/2) : (c/2 + 1 - (rl[c]-1)/2);
-    s[j + rl[j] - 1] = '\0';
-    return s+j;
+
+    for(i=0; i<=2*n; i++) {
+        // > 则取第一个次遇到的最长串
+        if(P[i] >= ml) {
+            cur = i;
+            ml = P[i];
+        }
+    }
+    s[(cur-ml)/2 + ml] = '\0';
+    return s + (cur-ml)/2;
 }
 
 int main() {
