@@ -112,3 +112,5 @@ UpgradeLog*.XML
 *.swp
 *~
 *.out
+.vscode
+
