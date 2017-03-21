@@ -14,3 +14,9 @@ Note:
 You can assume that you can always reach the last index.
 */
 
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        
+    }
+};
